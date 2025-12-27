@@ -24,9 +24,6 @@ const FilterSection = ({ title, children, defaultOpen = true }) => {
 const FilterSidebar = ({ filters, activeFilters, onFilterChange }) => {
     return (
         <aside className="filter-sidebar">
-            <div className="filter-sidebar-header">
-                <h3>Filters</h3>
-            </div>
 
             <FilterSection title="Price Range">
                 <div className="filter-options">
