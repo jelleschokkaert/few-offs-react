@@ -2905,7 +2905,7 @@ footer {
 
 .detail-name {
     font-size: 1.2rem;
-    color: var(--color-gray-medium);
+    color: var(--color-text);
     margin-bottom: 1rem;
     font-weight: 500;
     text-transform: uppercase;
