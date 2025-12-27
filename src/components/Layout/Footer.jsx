@@ -47,7 +47,6 @@ const Footer = () => {
                         <li><a href="#">Track Your Order</a></li>
                         <li><a href="#">Shipping & Returns</a></li>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Size Guide</a></li>
                     </ul>
                 </div>
 
@@ -58,7 +57,6 @@ const Footer = () => {
                         <li><a href="#">Careers</a></li>
                         <li><a href="#">Sustainability</a></li>
                         <li><a href="#">Student Discount</a></li>
-                        <li><a href="#">Gift Card</a></li>
                     </ul>
                 </div>
             </div>

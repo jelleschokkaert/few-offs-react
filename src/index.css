@@ -566,13 +566,10 @@ h4 {
     font-size: 1rem;
     border: none;
     clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
-    transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .btn-cta:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 0 20px rgba(210, 255, 0, 0.4);
     color: var(--color-dark-bg);
 }
 
@@ -1782,6 +1779,11 @@ footer {
         align-items: flex-start;
     }
 
+    .product-listing-container {
+        flex: 1;
+        min-width: 0;
+    }
+
     .mobile-filter-toggle,
     .mobile-filter-header,
     .mobile-apply-btn,
@@ -1808,6 +1810,7 @@ footer {
         justify-content: space-between;
         align-items: center;
         margin-bottom: 2rem;
+        width: 100%;
     }
 }
 
@@ -2227,6 +2230,15 @@ footer {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2rem;
     width: 100%;
+    min-height: 200px;
+}
+
+.no-products-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--color-gray-medium);
+    padding: 3rem 1rem;
+    font-size: 0.95rem;
 }
 
 /* Filter Sidebar Styles */
@@ -2673,18 +2685,18 @@ footer {
 .custom-radio::after {
     content: "";
     position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 10px;
-    height: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 16px;
+    height: 16px;
     background: var(--color-accent);
     border-radius: 50%;
-    transform: scale(0);
     transition: transform 0.2s ease;
 }
 
 .filter-option input:checked~.custom-radio::after {
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
 }
 
 /* Size Chips */

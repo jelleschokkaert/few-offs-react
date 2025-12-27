@@ -182,22 +182,22 @@ const CategoryPage = ({ category }) => {
                         </div>
 
                         <div className="shop-grid">
-                            {currentProducts.map((product) => (
-                                <ShopProductCard
-                                    key={product.id}
-                                    id={product.id}
-                                    image={product.image}
-                                    brand={product.brand}
-                                    name={product.name}
-                                    badge={product.badge}
-                                    price={product.price}
-                                />
-                            ))}
+                            {currentProducts.length > 0 ? (
+                                currentProducts.map((product) => (
+                                    <ShopProductCard
+                                        key={product.id}
+                                        id={product.id}
+                                        image={product.image}
+                                        brand={product.brand}
+                                        name={product.name}
+                                        badge={product.badge}
+                                        price={product.price}
+                                    />
+                                ))
+                            ) : (
+                                <p className="no-products-message">No products found matching your filters.</p>
+                            )}
                         </div>
-
-                        {filteredProducts.length === 0 && (
-                            <p style={{ opacity: 0.5, marginTop: '2rem' }}>No products found matching your filters.</p>
-                        )}
 
                         {filteredProducts.length > 0 && (
                             <div className="pagination">
