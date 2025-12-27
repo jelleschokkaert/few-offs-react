@@ -11,9 +11,13 @@ const ShopProductCard = ({ id, image, brand, name, price, badge }) => {
                     <button className="add-to-cart-btn">View Product</button>
                 </div>
                 <div className="shop-product-info">
-                    <span className="shop-brand">{brand}</span>
-                    <h3 className="shop-name">{name}</h3>
-                    <span className="shop-price">€{price}</span>
+                    <div className="shop-info-left">
+                        <span className="shop-brand">{brand}</span>
+                        <h3 className="shop-name">{name}</h3>
+                    </div>
+                    <div className="shop-info-right">
+                        <span className="shop-price">€{price}</span>
+                    </div>
                 </div>
             </Link>
         </div>

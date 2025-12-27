@@ -1,5 +1,5 @@
 export const navData = {
-    heren: [
+    men: [
         {
             title: "New & Featured",
             links: ["New Arrivals", "Best Sellers", "Latest Drops", "Sale"]
@@ -17,7 +17,7 @@ export const navData = {
             links: ["Bags & Backpacks", "Hats & Caps", "Socks", "All Accessories"]
         }
     ],
-    dames: [
+    women: [
         {
             title: "New & Featured",
             links: ["New Arrivals", "Best Sellers", "Latest Drops", "Sale"]

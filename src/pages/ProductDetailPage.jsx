@@ -45,8 +45,8 @@ const ProductDetailPage = () => {
             <div className="product-page-error">
                 <Navbar />
                 <div className="error-content">
-                    <h2>Product niet gevonden</h2>
-                    <Link to="/">Terug naar home</Link>
+                    <h2>Product not found</h2>
+                    <Link to="/">Back to home</Link>
                 </div>
                 <Footer />
             </div>
@@ -119,7 +119,7 @@ const ProductDetailPage = () => {
 
                         {/* Color Selector */}
                         <div className="color-selector">
-                            <span className="selector-label">Kleur: <span className="selected-value">{selectedColor}</span></span>
+                            <span className="selector-label">Color: <span className="selected-value">{selectedColor}</span></span>
                             <div className="color-options">
                                 {colors.map((c) => (
                                     <button
@@ -137,8 +137,8 @@ const ProductDetailPage = () => {
                         {/* Size Selector */}
                         <div className="size-selector">
                             <div className="size-header">
-                                <span className="selector-label">Selecteer Maat</span>
-                                <button className="size-guide-btn">Maattabel</button>
+                                <span className="selector-label">Size</span>
+                                <button className="size-guide-btn">Size Guide</button>
                             </div>
                             <div className="size-options">
                                 {product.sizes.map((size) => (
@@ -160,22 +160,22 @@ const ProductDetailPage = () => {
                                 disabled={!selectedSize}
                             >
                                 <ShoppingBag size={20} />
-                                {selectedSize ? 'In Winkelmand' : 'Selecteer een maat'}
+                                {selectedSize ? 'Add to Cart' : 'Select a size'}
                             </button>
                             <button className="btn-wishlist">
                                 <Heart size={20} />
-                                Toevoegen aan wishlist
+                                Add to wishlist
                             </button>
                         </div>
 
                         {/* Extra Info Accordions */}
                         <div className="product-info-sections">
                             <InfoSection
-                                title="Alles over dit product"
+                                title="About this product"
                                 isOpen={openSection === 'description'}
                                 onToggle={() => toggleSection('description')}
                             >
-                                <p>{product.description_long || "Dit exclusieve item is een essentieel onderdeel voor je garderobe. Gemaakt met hoogwaardige materialen en oog voor detail."}</p>
+                                <p>{product.description_long || "This exclusive item is an essential addition to your wardrobe. Made with high-quality materials and attention to detail."}</p>
                                 {product.specifications && (
                                     <ul>
                                         {product.specifications.map((spec, idx) => (
@@ -186,28 +186,28 @@ const ProductDetailPage = () => {
                             </InfoSection>
 
                             <InfoSection
-                                title="Materiaal & Wasvoorschrift"
+                                title="Material & Care"
                                 isOpen={openSection === 'material'}
                                 onToggle={() => toggleSection('material')}
                             >
-                                <p><strong>Materiaal:</strong> {product.material || "Katoen mix"}</p>
-                                <p><strong>Wasvoorschrift:</strong> {product.wash_instructions || "Raadpleeg het waslabel voor instructies."}</p>
+                                <p><strong>Material:</strong> {product.material || "Cotton blend"}</p>
+                                <p><strong>Care:</strong> {product.wash_instructions || "Please refer to the care label for instructions."}</p>
                             </InfoSection>
 
                             <InfoSection
-                                title="Fitting"
+                                title="Fit"
                                 isOpen={openSection === 'fitting'}
                                 onToggle={() => toggleSection('fitting')}
                             >
-                                <p>{product.fitting || "Dit item valt normaal op maat. We raden je aan je eigen maat te bestellen."}</p>
+                                <p>{product.fitting || "This item fits true to size. We recommend ordering your regular size."}</p>
                             </InfoSection>
 
                             <InfoSection
-                                title="Verzending & Retour"
+                                title="Shipping & Returns"
                                 isOpen={openSection === 'shipping'}
                                 onToggle={() => toggleSection('shipping')}
                             >
-                                <p>Op werkdagen voor 22:00 besteld, morgen in huis. Gratis verzending vanaf €150. Je hebt 14 dagen de tijd om je bestelling te retourneren.</p>
+                                <p>Order before 10 PM on business days for next-day delivery. Free shipping on orders over €150. You have 14 days to return your order.</p>
                             </InfoSection>
                         </div>
                     </div>
@@ -216,7 +216,7 @@ const ProductDetailPage = () => {
                 {/* Related Products */}
                 {relatedProducts.length > 0 && (
                     <div className="related-products">
-                        <h3 className="section-title small">Misschien vind je dit ook leuk</h3>
+                        <h3 className="section-title small">You might also like</h3>
                         <div className="shop-grid">
                             {relatedProducts.map((related) => (
                                 <ShopProductCard

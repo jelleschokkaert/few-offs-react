@@ -27,8 +27,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/product/:id" element={<ProductDetailPage />} />
-      <Route path="/heren" element={<CategoryPage category="heren" />} />
-      <Route path="/dames" element={<CategoryPage category="dames" />} />
+      <Route path="/men" element={<CategoryPage category="men" />} />
+      <Route path="/women" element={<CategoryPage category="women" />} />
       <Route path="/kids" element={<CategoryPage category="kids" />} />
       <Route path="/brands" element={<BrandsPage />} />
     </Routes>

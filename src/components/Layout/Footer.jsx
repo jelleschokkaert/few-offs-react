@@ -33,33 +33,32 @@ const Footer = () => {
                 <div className="footer-column">
                     <h4>Shop</h4>
                     <ul>
-                        <li><a href="#">Dames</a></li>
-                        <li><a href="#">Heren</a></li>
-                        <li><a href="#">Kids</a></li>
-                        <li><Link to="/brands">Merken</Link></li>
-                        {/* Sale link removed */}
+                        <li><Link to="/women">Women</Link></li>
+                        <li><Link to="/men">Men</Link></li>
+                        <li><Link to="/kids">Kids</Link></li>
+                        <li><Link to="/brands">Brands</Link></li>
                     </ul>
                 </div>
 
                 <div className="footer-column">
-                    <h4>Klantenservice</h4>
+                    <h4>Customer Service</h4>
                     <ul>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="#">Volg je bestelling</a></li>
-                        <li><a href="#">Verzending & Retour</a></li>
+                        <li><a href="#">Track Your Order</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Maat gids</a></li>
+                        <li><a href="#">Size Guide</a></li>
                     </ul>
                 </div>
 
                 <div className="footer-column">
-                    <h4>Over Few-offs</h4>
+                    <h4>About Few-offs</h4>
                     <ul>
-                        <li><a href="#">Ons verhaal</a></li>
-                        <li><a href="#">Vacatures</a></li>
-                        <li><a href="#">Duurzaamheid</a></li>
-                        <li><a href="#">Studentenkorting</a></li>
-                        <li><a href="#">Cadeaubon</a></li>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Student Discount</a></li>
+                        <li><a href="#">Gift Card</a></li>
                     </ul>
                 </div>
             </div>
@@ -70,7 +69,7 @@ const Footer = () => {
                 </div>
                 <div className="footer-legal">
                     <a href="#">Privacy</a>
-                    <a href="#">Voorwaarden</a>
+                    <a href="#">Terms</a>
                     <a href="#">Cookies</a>
                 </div>
             </div>

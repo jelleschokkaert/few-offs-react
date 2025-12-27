@@ -84,24 +84,24 @@ const Navbar = () => {
                         <nav className="desktop-nav">
                             <div
                                 className="nav-item"
-                                onMouseEnter={() => handleMouseEnter('heren')}
+                                onMouseEnter={() => handleMouseEnter('men')}
                                 onMouseLeave={handleMouseLeave}
                             >
-                                <Link to="/heren" className="nav-link">Heren</Link>
+                                <Link to="/men" className="nav-link">Men</Link>
                                 <MegaMenu
-                                    data={navData.heren}
-                                    isVisible={activeMenu === 'heren'}
+                                    data={navData.men}
+                                    isVisible={activeMenu === 'men'}
                                 />
                             </div>
                             <div
                                 className="nav-item"
-                                onMouseEnter={() => handleMouseEnter('dames')}
+                                onMouseEnter={() => handleMouseEnter('women')}
                                 onMouseLeave={handleMouseLeave}
                             >
-                                <Link to="/dames" className="nav-link">Dames</Link>
+                                <Link to="/women" className="nav-link">Women</Link>
                                 <MegaMenu
-                                    data={navData.dames}
-                                    isVisible={activeMenu === 'dames'}
+                                    data={navData.women}
+                                    isVisible={activeMenu === 'women'}
                                 />
                             </div>
                             <div
@@ -179,10 +179,10 @@ const Navbar = () => {
 
                     <div className="mobile-menu-content">
                         <nav className="mobile-nav-main">
-                            <Link to="/dames" onClick={closeMenu}>DAMES</Link>
-                            <Link to="/heren" onClick={closeMenu}>HEREN</Link>
+                            <Link to="/women" onClick={closeMenu}>WOMEN</Link>
+                            <Link to="/men" onClick={closeMenu}>MEN</Link>
                             <Link to="/kids" onClick={closeMenu}>KIDS</Link>
-                            <Link to="/brands" onClick={closeMenu}>MERKEN</Link>
+                            <Link to="/brands" onClick={closeMenu}>BRANDS</Link>
                             <Link to="/login" onClick={closeMenu}>LOGIN</Link>
                             <Link to="/cart" onClick={closeMenu}>CART</Link>
                         </nav>
