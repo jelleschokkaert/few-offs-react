@@ -11,6 +11,7 @@ import CategoryPage from "./pages/CategoryPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import BrandsPage from "./pages/BrandsPage";
 import WishlistPage from "./pages/WishlistPage";
+import CartPage from "./pages/CartPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import { products } from "./data/products";
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="/kids" element={<CategoryPage category="kids" />} />
         <Route path="/brands" element={<BrandsPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
