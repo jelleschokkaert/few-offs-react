@@ -60,7 +60,6 @@ const CartPage = () => {
                                             <span>Size: {item.selectedSize}</span>
                                             <span>Color: {item.selectedColor}</span>
                                         </div>
-                                        <button className="cart-remove-btn">Remove</button>
                                     </div>
                                     <div className="cart-item-quantity">
                                         <div className="quantity-controls">
@@ -72,6 +71,12 @@ const CartPage = () => {
                                     <div className="cart-item-price">
                                         €{item.price * item.quantity}
                                     </div>
+                                    <button className="cart-remove-btn" aria-label="Remove item">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                                        </svg>
+                                    </button>
                                 </div>
                             ))}
                         </div>

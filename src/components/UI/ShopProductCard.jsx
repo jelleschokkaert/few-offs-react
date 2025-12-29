@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Heart } from "lucide-react";
 
 const ShopProductCard = ({
   id,
@@ -10,6 +11,8 @@ const ShopProductCard = ({
   badge,
   priority = false,
 }) => {
+  const [isWishlisted, setIsWishlisted] = useState(false);
+
   return (
     <div className="shop-product-card">
       <Link to={`/product/${id}`} className="block">
@@ -20,6 +23,15 @@ const ShopProductCard = ({
             loading={priority ? "eager" : "lazy"}
             fetchPriority={priority ? "high" : "auto"}
           />
+          <button
+            className={`wishlist-btn ${isWishlisted ? "active" : ""}`}
+            onClick={(e) => {
+              e.preventDefault();
+              setIsWishlisted(!isWishlisted);
+            }}
+          >
+            <Heart size={20} fill={isWishlisted ? "currentColor" : "none"} />
+          </button>
           {badge && <span className="shop-badge">{badge}</span>}
           <button className="add-to-cart-btn">View Product</button>
         </div>
