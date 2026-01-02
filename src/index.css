@@ -10,6 +10,1004 @@
     --spacing-container: 6vw;
 }
 
+/* =====================================================
+   GLOBAL KEYFRAMES - Only defined once
+   ===================================================== */
+@keyframes wishlistPop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.4);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* =====================================================
+   NEW SECTION STYLES
+   ===================================================== */
+.new-section {
+    background: var(--color-bg);
+    padding: 5rem 0;
+    overflow: hidden;
+}
+
+.new-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 6vw;
+}
+
+.new-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.new-title-wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.new-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.new-accent {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    color: #0a0a0a;
+    line-height: 1;
+}
+
+.new-subtitle {
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.05em;
+    color: rgba(10, 10, 10, 0.5);
+}
+
+.new-view-all {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #0a0a0a;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition:
+        gap 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+    background: #d2ff00;
+    padding: 0.75rem 1.25rem;
+}
+
+.new-view-all:hover {
+    gap: 0.75rem;
+    background: #0a0a0a;
+    color: #fff;
+}
+
+.new-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 280px;
+    grid-auto-flow: dense;
+    gap: 1rem;
+}
+
+.new-card {
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    text-decoration: none;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: border-color 0.3s ease;
+    contain: layout style paint;
+}
+
+.new-card:hover {
+    border-color: #d2ff00;
+}
+
+.new-card-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.new-card-tall {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.new-card-wide {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.new-card-normal {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.new-card-image {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.new-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.new-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        transparent 40%,
+        rgba(0, 0, 0, 0.7) 100%
+    );
+    pointer-events: none;
+}
+
+.new-wishlist {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        opacity 0.2s ease;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.new-card:hover .new-wishlist {
+    opacity: 1;
+}
+
+.new-wishlist:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
+}
+
+.new-wishlist.active {
+    color: #d2ff00;
+    background: rgba(0, 0, 0, 0.8);
+    animation: wishlistPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 12px rgba(210, 255, 0, 0.4);
+    opacity: 1;
+}
+
+.new-wishlist svg {
+    stroke-width: 2px;
+}
+
+.new-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: #d2ff00;
+    color: #000;
+}
+
+.new-card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.25rem;
+    color: #fff;
+    z-index: 2;
+}
+
+.new-brand {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #d2ff00;
+    margin-bottom: 0.25rem;
+}
+
+.new-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.new-card-large .new-name {
+    font-size: 1.25rem;
+}
+
+.new-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-shop-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.7);
+    transition:
+        color 0.3s ease,
+        gap 0.3s ease;
+}
+
+.new-card:hover .new-shop-link {
+    color: #d2ff00;
+    gap: 0.6rem;
+}
+
+/* =====================================================
+   TRENDING SECTION STYLES
+   ===================================================== */
+.trending-section {
+    position: relative;
+    background: #0a0a0a;
+    padding: 5rem 0;
+    overflow: hidden;
+}
+
+.trending-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(210, 255, 0, 0.03) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(210, 255, 0, 0.02) 0%,
+            transparent 50%
+        );
+    pointer-events: none;
+}
+
+.trending-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 6vw;
+}
+
+.trending-header {
+    margin-bottom: 2rem;
+}
+
+.trending-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    color: #fff;
+    line-height: 0.85;
+}
+
+.trending-accent {
+    color: #d2ff00;
+    display: inline-block;
+    text-shadow:
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        1px 1px 0 #fff,
+        0 0 8px rgba(210, 255, 0, 0.5);
+}
+
+.trending-carousel-wrapper {
+    display: flex;
+    align-items: stretch;
+    gap: 1rem;
+}
+
+.trending-arrow-spacer {
+    flex-shrink: 0;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trending-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.trending-arrow {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+    padding: 0.5rem;
+}
+
+.trending-arrow:hover {
+    color: #d2ff00;
+    transform: scale(1.1);
+}
+
+.trending-cards {
+    display: flex;
+    gap: 1rem;
+    overflow-x: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+}
+
+.trending-cards::-webkit-scrollbar {
+    display: none;
+}
+
+.trending-card-new {
+    flex: 0 0 calc((100% - 3rem) / 4);
+    scroll-snap-align: start;
+    text-decoration: none;
+    contain: layout style paint;
+}
+
+.trending-card-inner {
+    background: linear-gradient(180deg, #1a1a1a 0%, #111 100%);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: border-color 0.3s ease;
+    height: 100%;
+}
+
+.trending-card-new:hover .trending-card-inner {
+    border-color: #d2ff00;
+}
+
+.trending-image-container {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+}
+
+.trending-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.trending-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        transparent 50%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+    pointer-events: none;
+}
+
+.trending-wishlist {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        opacity 0.2s ease;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.trending-card-new:hover .trending-wishlist {
+    opacity: 1;
+}
+
+.trending-wishlist:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
+}
+
+.trending-wishlist.active {
+    color: #d2ff00;
+    background: rgba(0, 0, 0, 0.8);
+    animation: wishlistPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 12px rgba(210, 255, 0, 0.4);
+    opacity: 1;
+}
+
+.trending-wishlist svg {
+    stroke-width: 2px;
+}
+
+.trending-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: #d2ff00;
+    color: #000;
+}
+
+.trending-card-content {
+    padding: 1.25rem;
+}
+
+.trending-brand {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #d2ff00;
+    margin-bottom: 0.5rem;
+}
+
+.trending-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.trending-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trending-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* =====================================================
+   FOR YOU SECTION STYLES
+   ===================================================== */
+.foryou-section {
+    background: #f2f2f2;
+    padding: 4rem 0;
+}
+
+.foryou-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 6vw;
+}
+
+.foryou-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.foryou-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    color: #0a0a0a;
+    line-height: 0.85;
+}
+
+.foryou-accent {
+    color: #d2ff00;
+    display: inline-block;
+    text-shadow:
+        -1px -1px 0 #0a0a0a,
+        1px -1px 0 #0a0a0a,
+        -1px 1px 0 #0a0a0a,
+        1px 1px 0 #0a0a0a,
+        0 0 8px rgba(210, 255, 0, 0.5);
+}
+
+.foryou-view-all {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #0a0a0a;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition:
+        gap 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+    background: #d2ff00;
+    padding: 0.75rem 1.25rem;
+}
+
+.foryou-view-all:hover {
+    gap: 0.75rem;
+    background: #0a0a0a;
+    color: #fff;
+}
+
+.foryou-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.foryou-card {
+    position: relative;
+    background: #fff;
+    text-decoration: none;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: border-color 0.3s ease;
+    contain: layout style paint;
+}
+
+.foryou-card:hover {
+    border-color: #d2ff00;
+}
+
+.foryou-card-image {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+}
+
+.foryou-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.foryou-wishlist {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        opacity 0.2s ease;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.foryou-card:hover .foryou-wishlist {
+    opacity: 1;
+}
+
+.foryou-wishlist:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
+}
+
+.foryou-wishlist.active {
+    color: #d2ff00;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+    animation: wishlistPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 12px rgba(210, 255, 0, 0.4);
+}
+
+.foryou-wishlist svg {
+    stroke-width: 2px;
+}
+
+.foryou-badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: #d2ff00;
+    color: #000;
+}
+
+.foryou-card-info {
+    padding: 1rem;
+}
+
+.foryou-brand {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(10, 10, 10, 0.5);
+    margin-bottom: 0.25rem;
+}
+
+.foryou-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #0a0a0a;
+    line-height: 1.3;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.foryou-price {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0a0a0a;
+}
+
+/* =====================================================
+   RESPONSIVE - NEW SECTION
+   ===================================================== */
+@media (max-width: 1200px) {
+    .new-bento-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 250px;
+    }
+    .new-card-large {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+}
+
+@media (max-width: 900px) {
+    .new-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 220px;
+        gap: 1rem;
+    }
+    .new-card-large {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .new-card-wide {
+        grid-column: span 2;
+    }
+    .new-card-tall {
+        grid-row: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .new-section {
+        padding: 3rem 0;
+    }
+    .new-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+    .new-subtitle {
+        font-size: 0.8rem;
+    }
+    .new-wishlist {
+        opacity: 1;
+        width: 32px;
+        height: 32px;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+    .new-view-all {
+        width: 100%;
+        justify-content: center;
+    }
+    .new-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 200px;
+        gap: 0.75rem;
+    }
+    .new-card-info {
+        padding: 1rem;
+    }
+    .new-brand {
+        font-size: 0.6rem;
+    }
+    .new-name {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+        -webkit-line-clamp: 1;
+    }
+    .new-card-large .new-name {
+        font-size: 1rem;
+        -webkit-line-clamp: 2;
+    }
+    .new-shop-link {
+        font-size: 0.65rem;
+    }
+    .new-badge {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.55rem;
+        top: 0.5rem;
+        left: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .new-section {
+        padding: 2.5rem 0;
+    }
+    .new-container {
+        padding: 0 4vw;
+    }
+    .new-header {
+        margin-bottom: 1.5rem;
+    }
+    .new-bento-grid {
+        grid-auto-rows: 180px;
+        gap: 0.5rem;
+    }
+    .new-card-info {
+        padding: 0.75rem;
+    }
+    .new-name {
+        font-size: 0.75rem;
+    }
+    .new-card-large .new-name {
+        font-size: 0.9rem;
+    }
+    .new-card-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE - TRENDING SECTION
+   ===================================================== */
+@media (max-width: 1200px) {
+    .trending-card-new {
+        flex: 0 0 calc((100% - 2rem) / 3);
+    }
+}
+
+@media (max-width: 900px) {
+    .trending-card-new {
+        flex: 0 0 calc((100% - 1rem) / 2);
+    }
+}
+
+@media (max-width: 768px) {
+    .trending-section {
+        padding: 3rem 0;
+    }
+    .trending-title {
+        font-size: 10vw;
+    }
+    .trending-arrow-spacer {
+        display: none;
+    }
+    .trending-cards {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .trending-wishlist {
+        opacity: 1;
+    }
+    .trending-card-content {
+        padding: 1rem;
+    }
+    .trending-name {
+        font-size: 0.85rem;
+        -webkit-line-clamp: 1;
+    }
+    .trending-price {
+        font-size: 1rem;
+    }
+    .trending-brand {
+        font-size: 0.6rem;
+    }
+    .trending-badge {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.55rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .trending-section {
+        padding: 2.5rem 0;
+    }
+    .trending-container {
+        padding: 0 4vw;
+    }
+    .trending-header {
+        margin-bottom: 1.5rem;
+    }
+    .trending-title {
+        font-size: 12vw;
+    }
+    .trending-cards {
+        gap: 0.75rem;
+    }
+    .trending-card-new {
+        flex: 0 0 calc((100% - 0.75rem) / 2);
+    }
+    .trending-card-content {
+        padding: 0.75rem;
+    }
+    .trending-name {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+    .trending-price {
+        font-size: 0.9rem;
+    }
+    .trending-wishlist {
+        width: 32px;
+        height: 32px;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+    .trending-badge {
+        top: 0.5rem;
+        left: 0.5rem;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE - FOR YOU SECTION
+   ===================================================== */
+@media (max-width: 1200px) {
+    .foryou-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .foryou-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .foryou-section {
+        padding: 3rem 0;
+    }
+    .foryou-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .foryou-grid {
+        gap: 0.75rem;
+    }
+    .foryou-wishlist {
+        opacity: 1;
+        width: 32px;
+        height: 32px;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+    .foryou-badge {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.55rem;
+        top: 0.5rem;
+        left: 0.5rem;
+    }
+    .foryou-view-all {
+        width: 100%;
+        justify-content: center;
+    }
+    .foryou-card-info {
+        padding: 0.75rem;
+    }
+    .foryou-brand {
+        font-size: 0.6rem;
+    }
+    .foryou-name {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 1;
+        margin-bottom: 0.25rem;
+    }
+    .foryou-price {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .foryou-section {
+        padding: 2.5rem 0;
+    }
+    .foryou-container {
+        padding: 0 4vw;
+    }
+    .foryou-grid {
+        gap: 0.5rem;
+    }
+    .foryou-card-info {
+        padding: 0.6rem;
+    }
+    .foryou-name {
+        font-size: 0.75rem;
+    }
+    .foryou-price {
+        font-size: 0.85rem;
+    }
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -66,6 +1064,9 @@ h4 {
 }
 
 /* Navigation */
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -76,12 +1077,12 @@ h4 {
     left: 0;
     width: 100%;
     z-index: 100;
-    background: rgba(10, 10, 10, 0.9);
-    backdrop-filter: blur(5px);
+    background: rgba(10, 10, 10, 0.95);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--color-light-text);
-    transition: all 0.3s ease;
-    will-change: background, padding;
+    transition:
+        background 0.3s ease,
+        padding 0.3s ease;
 }
 
 .nav-left {
@@ -445,18 +1446,22 @@ h4 {
 }
 
 .hero-visual-layer::before {
-    background: repeating-linear-gradient(0deg,
-            rgba(0, 0, 0, 0.15) 0px,
-            transparent 1px,
-            transparent 2px,
-            rgba(0, 0, 0, 0.15) 3px);
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.15) 3px
+    );
 }
 
 .hero-visual-layer::after {
-    background: linear-gradient(90deg,
-            rgba(210, 255, 0, 0.03),
-            rgba(255, 0, 255, 0.03),
-            rgba(0, 255, 255, 0.03));
+    background: linear-gradient(
+        90deg,
+        rgba(210, 255, 0, 0.03),
+        rgba(255, 0, 255, 0.03),
+        rgba(0, 255, 255, 0.03)
+    );
 }
 
 .hero-video {
@@ -874,13 +1879,11 @@ h4 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-
 /* Wishlist Button */
 .shop-image-wrapper {
     position: relative;
     overflow: hidden;
 }
-
 
 .wishlist-btn {
     position: absolute;
@@ -964,7 +1967,6 @@ h4 {
     height: 100%;
     object-fit: cover;
 }
-
 
 /* Trending Section */
 .trending-section {
@@ -1345,7 +2347,6 @@ footer {
 
 /* Touch device improvements */
 @media (hover: none) and (pointer: coarse) {
-
     /* Make product cards always show info on mobile touch devices */
     .product-info {
         opacity: 1;
@@ -1911,12 +2912,6 @@ footer {
         gap: 1rem;
     }
 
-
-
-
-
-
-
     /* Typography Overrides */
     .detail-name {
         font-size: 2rem;
@@ -2197,7 +3192,6 @@ footer {
     font-weight: 900;
 }
 
-
 .shop-badge {
     position: absolute;
     top: 10px;
@@ -2345,7 +3339,6 @@ footer {
 .filter-group input:checked::before {
     transform: scale(1);
 }
-
 
 /* Navbar Redesign */
 .site-header {
@@ -2525,7 +3518,9 @@ footer {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-5px);
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-out;
+    transition:
+        opacity 0.3s ease-in-out,
+        transform 0.3s ease-out;
     z-index: 90;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -2599,7 +3594,6 @@ footer {
     }
 }
 
-
 /* Filter Sidebar Refactor */
 .filter-sidebar {
     width: 300px;
@@ -2650,7 +3644,6 @@ footer {
     color: var(--color-text);
     transition: color 0.3s ease;
 }
-
 
 .filter-icon {
     font-size: 1.2rem;
@@ -2707,7 +3700,7 @@ footer {
     transition: all 0.2s ease;
 }
 
-.filter-option input:checked~.custom-checkbox {
+.filter-option input:checked ~ .custom-checkbox {
     background: var(--color-accent);
     border-color: var(--color-text);
 }
@@ -2725,7 +3718,7 @@ footer {
     transition: transform 0.2s ease;
 }
 
-.filter-option input:checked~.custom-checkbox::after {
+.filter-option input:checked ~ .custom-checkbox::after {
     transform: rotate(45deg) scale(1);
 }
 
@@ -2738,7 +3731,7 @@ footer {
     transition: all 0.2s ease;
 }
 
-.filter-option input:checked~.custom-radio {
+.filter-option input:checked ~ .custom-radio {
     border-color: var(--color-text);
 }
 
@@ -2755,7 +3748,7 @@ footer {
     transition: transform 0.2s ease;
 }
 
-.filter-option input:checked~.custom-radio::after {
+.filter-option input:checked ~ .custom-radio::after {
     transform: translate(-50%, -50%) scale(1);
 }
 
@@ -3569,7 +4562,6 @@ footer {
     border-top: 1px solid var(--color-gray-light);
 }
 
-
 /* Brands Page */
 .brands-page {
     padding-top: 8rem;
@@ -3646,7 +4638,6 @@ footer {
 
 /* Mobile Layout Optimizations */
 @media (max-width: 900px) {
-
     /* Hero */
     .hero-headline {
         font-size: 15vw;
@@ -3801,12 +4792,6 @@ footer {
         flex-direction: column;
         gap: 1rem;
     }
-
-
-
-
-
-
 
     /* Typography Overrides */
     .detail-name {

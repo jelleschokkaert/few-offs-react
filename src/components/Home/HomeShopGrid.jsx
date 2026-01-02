@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import TrendingSection from "./TrendingSection";
 import NewSection from "./NewSection";
 import ForYouSection from "./ForYouSection";
@@ -13,4 +13,4 @@ const HomeShopGrid = () => {
   );
 };
 
-export default HomeShopGrid;
+export default memo(HomeShopGrid);

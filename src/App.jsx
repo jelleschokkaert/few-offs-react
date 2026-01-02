@@ -13,7 +13,6 @@ import BrandsPage from "./pages/BrandsPage";
 import WishlistPage from "./pages/WishlistPage";
 import CartPage from "./pages/CartPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import { products } from "./data/products";
 
 const Home = () => (
   <>

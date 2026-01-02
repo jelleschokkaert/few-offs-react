@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import Navbar from "../components/Layout/Navbar";
 import Footer from "../components/Layout/Footer";
 import ShopProductCard from "../components/UI/ShopProductCard";
@@ -8,7 +8,6 @@ import SortDropdown from "../components/UI/SortDropdown";
 import { products } from "../data/products";
 
 const CategoryPage = ({ category }) => {
-  const [filteredProducts, setFilteredProducts] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [sortBy, setSortBy] = useState("newest");
   const [activeFilters, setActiveFilters] = useState({
@@ -17,51 +16,51 @@ const CategoryPage = ({ category }) => {
     sizes: [],
     colors: [],
   });
-
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 9;
 
-  // Extract unique values for filters
-  const categoryProducts = products.filter((p) => p.category === category);
-  const brands = [...new Set(categoryProducts.map((p) => p.brand))];
-  const sizes = [...new Set(categoryProducts.flatMap((p) => p.sizes || []))];
-  const colors = [
-    ...new Set(categoryProducts.map((p) => p.color).filter(Boolean)),
-  ];
+  const categoryProducts = useMemo(
+    () => products.filter((p) => p.category === category),
+    [category],
+  );
 
-  const filters = {
-    brands: brands,
-    sizes: sizes.sort(),
-    colors: colors.sort(),
-    priceRanges: [
-      { label: "All Prices", value: "all" },
-      { label: "Under €100", value: "under-100" },
-      { label: "€100 - €300", value: "100-300" },
-      { label: "Over €300", value: "over-300" },
-    ],
-  };
+  const filters = useMemo(() => {
+    const brands = [...new Set(categoryProducts.map((p) => p.brand))];
+    const sizes = [...new Set(categoryProducts.flatMap((p) => p.sizes || []))];
+    const colors = [
+      ...new Set(categoryProducts.map((p) => p.color).filter(Boolean)),
+    ];
 
-  useEffect(() => {
-    let result = categoryProducts;
+    return {
+      brands,
+      sizes: sizes.sort(),
+      colors: colors.sort(),
+      priceRanges: [
+        { label: "All Prices", value: "all" },
+        { label: "Under €100", value: "under-100" },
+        { label: "€100 - €300", value: "100-300" },
+        { label: "Over €300", value: "over-300" },
+      ],
+    };
+  }, [categoryProducts]);
 
-    // Filter by Brand
+  const filteredProducts = useMemo(() => {
+    let result = [...categoryProducts];
+
     if (activeFilters.brands.length > 0) {
       result = result.filter((p) => activeFilters.brands.includes(p.brand));
     }
 
-    // Filter by Size
     if (activeFilters.sizes.length > 0) {
       result = result.filter(
-        (p) => p.sizes && p.sizes.some((s) => activeFilters.sizes.includes(s))
+        (p) => p.sizes && p.sizes.some((s) => activeFilters.sizes.includes(s)),
       );
     }
 
-    // Filter by Color
     if (activeFilters.colors.length > 0) {
       result = result.filter((p) => activeFilters.colors.includes(p.color));
     }
 
-    // Filter by Price
     if (activeFilters.priceRange !== "all") {
       switch (activeFilters.priceRange) {
         case "under-100":
@@ -76,21 +75,27 @@ const CategoryPage = ({ category }) => {
       }
     }
 
-    // Sort
     if (sortBy === "price-asc") {
       result.sort((a, b) => a.price - b.price);
     } else if (sortBy === "price-desc") {
       result.sort((a, b) => b.price - a.price);
     } else {
-      // Newest (Default mock logic: random shuffle or ID based)
       result.sort((a, b) => b.id - a.id);
     }
 
-    setFilteredProducts(result);
-    setCurrentPage(1); // Reset to page 1 on filter change
-  }, [category, activeFilters, sortBy]);
+    return result;
+  }, [categoryProducts, activeFilters, sortBy]);
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filteredProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct,
+  );
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
   const handleFilterChange = (type, value) => {
+    setCurrentPage(1);
     if (type === "brands" || type === "sizes" || type === "colors") {
       setActiveFilters((prev) => {
         const current = prev[type] || [];
@@ -104,17 +109,12 @@ const CategoryPage = ({ category }) => {
     }
   };
 
+  const handleSortChange = (value) => {
+    setCurrentPage(1);
+    setSortBy(value);
+  };
+
   const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
-
-  // Pagination Logic
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = filteredProducts.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
-  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
@@ -138,7 +138,6 @@ const CategoryPage = ({ category }) => {
           </p>
         </div>
 
-        {/* Mobile Filter Toggle */}
         <button
           className="mobile-filter-toggle"
           onClick={() => setIsFilterOpen(true)}
@@ -187,7 +186,6 @@ const CategoryPage = ({ category }) => {
             </button>
           </div>
 
-          {/* Mobile Overlay */}
           {isFilterOpen && (
             <div
               className="mobile-filter-overlay"
@@ -199,7 +197,7 @@ const CategoryPage = ({ category }) => {
             <div className="category-header-row">
               <SortDropdown
                 value={sortBy}
-                onChange={setSortBy}
+                onChange={handleSortChange}
                 options={[
                   { value: "newest", label: "Newest Arrivals" },
                   { value: "price-asc", label: "Price: Low to High" },
