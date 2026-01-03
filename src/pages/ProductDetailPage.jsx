@@ -4,6 +4,7 @@ import { products } from "../data/products";
 import Navbar from "../components/Layout/Navbar";
 import Footer from "../components/Layout/Footer";
 import ShopProductCard from "../components/UI/ShopProductCard";
+import Breadcrumbs from "../components/UI/Breadcrumbs";
 import { ChevronDown, ChevronUp, ShoppingBag, Heart } from "lucide-react";
 
 const InfoSection = ({ title, isOpen, onToggle, children }) => {
@@ -18,56 +19,20 @@ const InfoSection = ({ title, isOpen, onToggle, children }) => {
   );
 };
 
-const ProductDetailPage = () => {
-  const { id } = useParams();
-  const product = useMemo(
-    () => products.find((p) => p.id === parseInt(id)),
-    [id],
-  );
-
-  const images = useMemo(
-    () => (product ? product.images || [product.image] : []),
-    [product],
-  );
-
-  const colors = useMemo(
-    () =>
-      product ? product.colors || [{ name: product.color, value: "#000" }] : [],
-    [product],
-  );
-
-  const defaultColor = useMemo(
-    () =>
-      product
-        ? product.colors && product.colors.length > 0
-          ? product.colors[0].name
-          : product.color
-        : "",
-    [product],
-  );
+const ProductDetailContent = ({ product }) => {
+  const images = product.images || [product.image];
+  const colors = product.colors || [{ name: product.color, value: "#000" }];
+  const defaultColor =
+    product.colors && product.colors.length > 0
+      ? product.colors[0].name
+      : product.color;
 
   const [selectedSize, setSelectedSize] = useState("");
-  const [activeImage, setActiveImage] = useState(product?.image || "");
+  const [activeImage, setActiveImage] = useState(product.image);
   const [selectedColor, setSelectedColor] = useState(defaultColor);
   const [openSection, setOpenSection] = useState("description");
 
-  // Scroll to top when navigating to a new product
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [id]);
-
-  // Reset selections when product changes
-  const productId = product?.id;
-  useEffect(() => {
-    if (product) {
-      setActiveImage(product.image);
-      setSelectedColor(product.colors?.[0]?.name || product.color || "");
-      setSelectedSize("");
-    }
-  }, [productId]); // eslint-disable-line react-hooks/exhaustive-deps
-
   const relatedProducts = useMemo(() => {
-    if (!product) return [];
     return products
       .filter((p) => p.category === product.category && p.id !== product.id)
       .slice(0, 4);
@@ -77,31 +42,27 @@ const ProductDetailPage = () => {
     setOpenSection(openSection === section ? null : section);
   };
 
-  if (!product) {
-    return (
-      <div className="product-page-error">
-        <Navbar />
-        <div className="error-content">
-          <h2>Product not found</h2>
-          <Link to="/">Back to home</Link>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
-
   return (
     <>
       <Navbar />
 
       <main className="product-page container">
-        <div className="breadcrumbs">
-          <Link to="/">Home</Link>
-          <span>/</span>
-          <Link to={`/${product.category}`}>{product.category}</Link>
-          <span>/</span>
-          <span className="current">{product.name}</span>
-        </div>
+        <Breadcrumbs
+          customItems={[
+            {
+              label:
+                product.category.charAt(0).toUpperCase() +
+                product.category.slice(1),
+              path: `/${product.category}`,
+              isLast: false,
+            },
+            {
+              label: product.name,
+              path: `/product/${product.id}`,
+              isLast: true,
+            },
+          ]}
+        />
 
         <div className="product-main-content">
           <div className="product-gallery">
@@ -277,6 +238,34 @@ const ProductDetailPage = () => {
       <Footer />
     </>
   );
+};
+
+const ProductDetailPage = () => {
+  const { id } = useParams();
+  const product = useMemo(
+    () => products.find((p) => p.id === parseInt(id)),
+    [id],
+  );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
+  if (!product) {
+    return (
+      <div className="product-page-error">
+        <Navbar />
+        <div className="error-content">
+          <h2>Product not found</h2>
+          <Link to="/">Back to home</Link>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  // Using key prop to reset all state when product changes
+  return <ProductDetailContent key={product.id} product={product} />;
 };
 
 export default ProductDetailPage;

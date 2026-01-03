@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Layout/Navbar";
 import Footer from "../components/Layout/Footer";
+import Breadcrumbs from "../components/UI/Breadcrumbs";
 import { products } from "../data/products";
 
 const BrandsPage = () => {
@@ -14,6 +15,7 @@ const BrandsPage = () => {
     <>
       <Navbar />
       <main className="brands-page container">
+        <Breadcrumbs />
         <div className="brands-header">
           <h1>Brands</h1>
           <p className="brands-subtitle">Curated Selection</p>

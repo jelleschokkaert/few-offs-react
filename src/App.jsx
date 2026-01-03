@@ -12,6 +12,7 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 import BrandsPage from "./pages/BrandsPage";
 import WishlistPage from "./pages/WishlistPage";
 import CartPage from "./pages/CartPage";
+import AccountPage from "./pages/AccountPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 const Home = () => (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/brands" element={<BrandsPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/account/*" element={<AccountPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>

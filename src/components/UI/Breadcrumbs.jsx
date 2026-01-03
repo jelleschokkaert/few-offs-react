@@ -1,44 +1,47 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const Breadcrumbs = () => {
+const Breadcrumbs = ({ customItems }) => {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
 
+  // Format path segment for display (e.g., "account" -> "Account", "my-orders" -> "My Orders")
+  const formatSegment = (segment) => {
+    return segment
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+
+  // If custom items are provided, use those instead of auto-generated breadcrumbs
+  const items =
+    customItems ||
+    pathnames.map((name, index) => ({
+      label: formatSegment(name),
+      path: `/${pathnames.slice(0, index + 1).join("/")}`,
+      isLast: index === pathnames.length - 1,
+    }));
+
   return (
     <nav className="breadcrumbs" aria-label="breadcrumb">
-      <ol
-        style={{
-          display: "flex",
-          gap: "0.5rem",
-          listStyle: "none",
-          padding: 0,
-          fontSize: "0.9rem",
-          textTransform: "uppercase",
-          fontWeight: 600,
-        }}
-      >
-        <li>
-          <Link to="/" style={{ opacity: 0.6, color: "var(--color-text)" }}>
+      <ol className="breadcrumbs-list">
+        <li className="breadcrumbs-item">
+          <Link to="/" className="breadcrumbs-link">
             Home
           </Link>
         </li>
-        {pathnames.map((name, index) => {
-          const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
-          const isLast = index === pathnames.length - 1;
-          return (
-            <li key={name} style={{ display: "flex", gap: "0.5rem" }}>
-              <span style={{ opacity: 0.4 }}>/</span>
-              {isLast ? (
-                <span style={{ color: "var(--color-text)" }}>{name}</span>
-              ) : (
-                <Link to={routeTo} style={{ opacity: 0.6 }}>
-                  {name}
-                </Link>
-              )}
-            </li>
-          );
-        })}
+        {items.map((item, index) => (
+          <li key={item.path || index} className="breadcrumbs-item">
+            <span className="breadcrumbs-separator">/</span>
+            {item.isLast ? (
+              <span className="breadcrumbs-current">{item.label}</span>
+            ) : (
+              <Link to={item.path} className="breadcrumbs-link">
+                {item.label}
+              </Link>
+            )}
+          </li>
+        ))}
       </ol>
     </nav>
   );

@@ -1,14 +1,7 @@
 import React, { memo } from "react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
-  const scrollToProducts = (e) => {
-    e.preventDefault();
-    const element = document.getElementById("shop-section");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section className="hero" style={{ height: "60vh", minHeight: "500px" }}>
       <div className="hero-visual-layer">
@@ -30,13 +23,7 @@ const Hero = () => {
           <span className="line-2">Arrivals</span>
         </h1>
         <div className="hero-meta" style={{ marginTop: "2rem" }}>
-          <a
-            href="#shop-section"
-            onClick={scrollToProducts}
-            className="btn-cta"
-          >
-            Shop Collection
-          </a>
+          <Link to="/men" className="btn-cta">Shop Collection</Link>
         </div>
       </div>
     </section>

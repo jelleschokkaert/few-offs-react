@@ -167,7 +167,7 @@ const Navbar = () => {
                   <path d="M16 10a4 4 0 0 1-8 0"></path>
                 </svg>
               </Link>
-              <Link to="/login" className="icon-btn" aria-label="Profile">
+              <Link to="/account" className="icon-btn" aria-label="Profile">
                 <svg
                   width="24"
                   height="24"
@@ -245,8 +245,8 @@ const Navbar = () => {
               <Link to="/wishlist" onClick={closeMenu}>
                 WISHLIST
               </Link>
-              <Link to="/login" onClick={closeMenu}>
-                LOGIN
+              <Link to="/account" onClick={closeMenu}>
+                ACCOUNT
               </Link>
               <Link to="/cart" onClick={closeMenu}>
                 CART
