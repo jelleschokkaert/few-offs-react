@@ -10,6 +10,7 @@ const GRID_PATTERNS = [
   "new-card-normal",
   "new-card-wide",
   "new-card-normal",
+  "new-card-normal",
 ];
 
 const ProductCard = memo(
@@ -62,7 +63,7 @@ const NewSection = () => {
 
   if (products.length === 0) return null;
 
-  const displayProducts = products.slice(0, 6);
+  const displayProducts = products.slice(0, 7);
 
   return (
     <section className="new-section">

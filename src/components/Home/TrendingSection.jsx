@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback, memo } from "react";
+import React, { useRef, useState, useCallback, useEffect, memo } from "react";
 import { Link } from "react-router-dom";
 import { Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { products } from "../../data/products";
@@ -44,7 +44,26 @@ ProductCard.displayName = "ProductCard";
 
 const TrendingSection = () => {
   const [wishlist, setWishlist] = useState({});
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
   const scrollRef = useRef(null);
+
+  const updateScrollState = useCallback(() => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
+    }
+  }, []);
+
+  useEffect(() => {
+    updateScrollState();
+    const container = scrollRef.current;
+    if (container) {
+      container.addEventListener("scroll", updateScrollState);
+      return () => container.removeEventListener("scroll", updateScrollState);
+    }
+  }, [updateScrollState]);
 
   const toggleWishlist = useCallback((e, productId) => {
     e.preventDefault();
@@ -80,45 +99,43 @@ const TrendingSection = () => {
       <div className="trending-bg-pattern"></div>
 
       <div className="trending-container">
+        <div className="trending-header">
+          <h2 className="trending-title">
+            <span className="trending-accent">Trending</span>
+            <span className="trending-subtitle">What everyone's wearing</span>
+          </h2>
+        </div>
+
         <div className="trending-carousel-wrapper">
-          <div className="trending-arrow-spacer">
-            <button
-              className="trending-arrow"
-              onClick={() => scroll("left")}
-              aria-label="Previous items"
-            >
-              <ChevronLeft size={32} />
-            </button>
+          <button
+            className={`trending-arrow trending-arrow-left ${!canScrollLeft ? "disabled" : ""}`}
+            onClick={() => scroll("left")}
+            disabled={!canScrollLeft}
+            aria-label="Previous items"
+          >
+            <ChevronLeft size={32} />
+          </button>
+
+          <div className="trending-cards" ref={scrollRef}>
+            {products.map((product, index) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                index={index}
+                isWishlisted={wishlist[product.id]}
+                onToggleWishlist={toggleWishlist}
+              />
+            ))}
           </div>
 
-          <div className="trending-main">
-            <div className="trending-header">
-              <h2 className="trending-title">
-                <span className="trending-accent">Trending</span>
-              </h2>
-            </div>
-            <div className="trending-cards" ref={scrollRef}>
-              {products.map((product, index) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  index={index}
-                  isWishlisted={wishlist[product.id]}
-                  onToggleWishlist={toggleWishlist}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div className="trending-arrow-spacer">
-            <button
-              className="trending-arrow"
-              onClick={() => scroll("right")}
-              aria-label="Next items"
-            >
-              <ChevronRight size={32} />
-            </button>
-          </div>
+          <button
+            className={`trending-arrow trending-arrow-right ${!canScrollRight ? "disabled" : ""}`}
+            onClick={() => scroll("right")}
+            disabled={!canScrollRight}
+            aria-label="Next items"
+          >
+            <ChevronRight size={32} />
+          </button>
         </div>
       </div>
     </section>

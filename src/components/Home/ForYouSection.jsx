@@ -55,6 +55,7 @@ const ForYouSection = () => {
         <div className="foryou-header">
           <h2 className="foryou-title">
             <span className="foryou-accent">For You</span>
+            <span className="foryou-subtitle">Picked just for you</span>
           </h2>
           <Link to="/men" className="foryou-view-all">
             View All
