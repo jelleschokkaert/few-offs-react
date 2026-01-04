@@ -23,7 +23,9 @@ const Hero = () => {
           <span className="line-2">Arrivals</span>
         </h1>
         <div className="hero-meta" style={{ marginTop: "2rem" }}>
-          <Link to="/men" className="btn-cta">Shop Collection</Link>
+          <Link to="/men" className="btn-cta">
+            Shop Collection
+          </Link>
         </div>
       </div>
     </section>

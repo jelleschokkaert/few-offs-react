@@ -95,11 +95,9 @@ async function optimizeImages() {
         100
       ).toFixed(0);
 
+      console.log(`✅ ${file}${needsResize ? " (resized)" : ""}`);
       console.log(
-        `✅ ${file}${needsResize ? " (resized)" : ""}`
-      );
-      console.log(
-        `   ${originalKB}KB → JPEG: ${jpegKB}KB, WebP: ${webpKB}KB (-${savings}%)\n`
+        `   ${originalKB}KB → JPEG: ${jpegKB}KB, WebP: ${webpKB}KB (-${savings}%)\n`,
       );
     } catch (err) {
       console.error(`❌ Error processing ${file}:`, err.message, "\n");
@@ -121,7 +119,7 @@ async function optimizeImages() {
   console.log(`   Total savings:   ${totalSavings}%`);
   console.log(`\n✨ Optimized images saved to: ${OUTPUT_DIR}`);
   console.log(
-    `\n💡 To use the optimized images, update your image paths from:`
+    `\n💡 To use the optimized images, update your image paths from:`,
   );
   console.log(`   "/image.jpg" → "/optimized/image.webp"`);
 }

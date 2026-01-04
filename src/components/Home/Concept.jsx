@@ -22,7 +22,7 @@ const Concept = () => {
       </div>
       <div className="concept-visual">
         <img
-          src="/pexels-rimiscky-34887628.jpg"
+          src="/optimized/pexels-rimiscky-34887628.webp"
           alt="Concept Visual"
           className="concept-img"
           loading="lazy"
