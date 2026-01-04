@@ -25,24 +25,12 @@ const CartPage = () => {
   return (
     <>
       <Navbar />
-      <div
-        className="container"
-        style={{
-          paddingTop: "8rem",
-          minHeight: "100vh",
-          paddingBottom: "4rem",
-        }}
-      >
+      <div className="container cart-page-container">
         <Breadcrumbs />
 
-        <div className="page-header">
-          <h1
-            className="category-title"
-            style={{ fontSize: "4rem", marginBottom: "1rem" }}
-          >
-            Shopping Cart
-          </h1>
-          <p className="category-description">
+        <div className="cart-page-header">
+          <h1 className="cart-page-title">Shopping Cart</h1>
+          <p className="cart-page-description">
             Review your selection before checkout.
           </p>
         </div>
