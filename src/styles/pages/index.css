@@ -1,0 +1,11 @@
+/* =====================================================
+   PAGES STYLES - INDEX
+   Imports all page-specific styles
+   ===================================================== */
+
+@import "./cart.css";
+@import "./not-found.css";
+@import "./account.css";
+@import "./brands.css";
+@import "./product-detail.css";
+@import "./category.css";

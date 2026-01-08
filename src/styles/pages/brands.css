@@ -1,0 +1,78 @@
+/* =====================================================
+   BRANDS PAGE STYLES
+   ===================================================== */
+
+.brands-page {
+    padding-top: 8rem;
+    padding-bottom: 6rem;
+    min-height: 80vh;
+}
+
+.brands-header {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.brands-header h1 {
+    font-size: 8vw;
+    line-height: 0.9;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    color: var(--color-text);
+}
+
+.brands-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-gray-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 4rem 2rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.brand-item {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.brand-name {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--color-gray-medium);
+    transition: all 0.3s ease;
+    cursor: default;
+    display: block;
+    line-height: 1;
+}
+
+.brand-item:hover .brand-name {
+    color: var(--color-text);
+    transform: scale(1.1);
+}
+
+/* =====================================================
+   RESPONSIVE - MOBILE (768px)
+   ===================================================== */
+
+@media (max-width: 768px) {
+    .brands-header h1 {
+        font-size: 15vw;
+    }
+
+    .brand-name {
+        font-size: 2rem;
+    }
+
+    .brands-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem 1rem;
+    }
+}

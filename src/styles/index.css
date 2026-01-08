@@ -1,0 +1,6 @@
+@import './base/index.css';
+
+@import './components/home/index.css';
+@import './components/layout/index.css';
+@import './components/ui/index.css';
+@import './pages/index.css';

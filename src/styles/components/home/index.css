@@ -1,0 +1,11 @@
+/* =====================================================
+   HOME COMPONENTS - INDEX
+   Imports all home page component styles
+   ===================================================== */
+
+@import './hero.css';
+@import './new-section.css';
+@import './trending-section.css';
+@import './for-you-section.css';
+@import './concept.css';
+@import './brands-marquee.css';

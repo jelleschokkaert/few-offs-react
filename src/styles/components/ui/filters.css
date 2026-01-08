@@ -1,0 +1,521 @@
+/* =====================================================
+   FILTER SIDEBAR & UI COMPONENTS
+   Filter controls, checkboxes, radios, chips, pagination
+   ===================================================== */
+
+/* =====================================================
+   FILTER SIDEBAR
+   ===================================================== */
+
+.filter-sidebar {
+    width: 300px;
+    flex-shrink: 0;
+    padding-right: 2rem;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.filter-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-gray-light);
+}
+
+.filter-sidebar-header h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.filter-count {
+    font-size: 0.8rem;
+    color: var(--color-gray-medium);
+    font-weight: 600;
+}
+
+/* =====================================================
+   FILTER GROUPS
+   ===================================================== */
+
+.filter-group {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.filter-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-text);
+    transition: color 0.3s ease;
+}
+
+.filter-icon {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.filter-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-out;
+}
+
+.filter-content.open {
+    grid-template-rows: 1fr;
+}
+
+.filter-content-inner {
+    overflow: hidden;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding-bottom: 1.5rem;
+}
+
+/* =====================================================
+   FILTER OPTION (Label wrapper)
+   ===================================================== */
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    position: relative;
+    color: rgba(10, 10, 10, 0.7);
+    transition: color 0.2s ease;
+}
+
+.filter-option:hover {
+    color: var(--color-text);
+}
+
+.filter-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* =====================================================
+   CUSTOM CHECKBOX
+   ===================================================== */
+
+.custom-checkbox {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ccc;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.filter-option input:checked ~ .custom-checkbox {
+    background: var(--color-accent);
+    border-color: var(--color-text);
+}
+
+.custom-checkbox::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid var(--color-dark-bg);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(0);
+    transition: transform 0.2s ease;
+}
+
+.filter-option input:checked ~ .custom-checkbox::after {
+    transform: rotate(45deg) scale(1);
+}
+
+/* =====================================================
+   CUSTOM RADIO
+   ===================================================== */
+
+.custom-radio {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.filter-option input:checked ~ .custom-radio {
+    border-color: var(--color-text);
+}
+
+.custom-radio::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 16px;
+    height: 16px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.filter-option input:checked ~ .custom-radio::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* =====================================================
+   NATIVE CHECKBOX/RADIO STYLING (filter-group)
+   ===================================================== */
+
+.filter-group input[type="checkbox"],
+.filter-group input[type="radio"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--color-gray-medium);
+    border-radius: 0;
+    display: grid;
+    place-content: center;
+    transition: all 0.2s ease;
+}
+
+.filter-group input[type="checkbox"]::before,
+.filter-group input[type="radio"]::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--color-dark-bg);
+}
+
+.filter-group input[type="radio"] {
+    border-radius: 50%;
+}
+
+.filter-group input[type="radio"]::before {
+    border-radius: 50%;
+}
+
+.filter-group input:checked {
+    border-color: var(--color-dark-bg);
+    background: var(--color-accent);
+}
+
+.filter-group input:checked::before {
+    transform: scale(1);
+}
+
+/* =====================================================
+   SIZE CHIPS (Filter chips)
+   ===================================================== */
+
+.grid-options {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.filter-chip {
+    position: relative;
+    cursor: pointer;
+}
+
+.filter-chip input {
+    position: absolute;
+    opacity: 0;
+}
+
+.filter-chip span {
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 1px solid #e0e0e0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+}
+
+.filter-chip:hover span {
+    border-color: var(--color-text);
+}
+
+.filter-chip.active span {
+    background: var(--color-text);
+    color: var(--color-light-text);
+    border-color: var(--color-text);
+}
+
+/* =====================================================
+   CATEGORY HEADER ROW
+   ===================================================== */
+
+.category-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.result-count {
+    font-size: 0.9rem;
+    color: var(--color-gray-medium);
+    font-weight: 500;
+}
+
+.sort-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sort-select {
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 16px;
+}
+
+.sort-select:focus {
+    outline: none;
+}
+
+/* =====================================================
+   PAGINATION
+   ===================================================== */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 4rem;
+}
+
+.page-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.page-btn.active {
+    background: var(--color-text);
+    color: var(--color-light-text);
+    border-color: var(--color-text);
+}
+
+.page-btn:hover:not(.active):not(:disabled) {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* =====================================================
+   RESPONSIVE - MOBILE (768px)
+   ===================================================== */
+
+@media (max-width: 768px) {
+    /* Mobile Filter Toggle Button */
+    .mobile-filter-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.875rem 1.5rem;
+        background: var(--color-text);
+        color: var(--color-bg);
+        border: none;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        position: fixed;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Mobile Filter Sidebar */
+    .filter-sidebar-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .filter-sidebar-wrapper.open {
+        pointer-events: auto;
+        opacity: 1;
+    }
+
+    .mobile-filter-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid var(--color-gray-light);
+        background: var(--color-bg);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .mobile-filter-header h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .mobile-filter-header button {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        line-height: 1;
+    }
+
+    .filter-sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 85%;
+        max-width: 350px;
+        height: 100%;
+        background: var(--color-bg);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 1001;
+        padding: 0;
+        overflow-y: auto;
+    }
+
+    .filter-sidebar-wrapper.open .filter-sidebar {
+        transform: translateX(0);
+    }
+
+    .mobile-apply-btn {
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.25rem;
+        background: var(--color-text);
+        color: var(--color-bg);
+        border: none;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.95rem;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .mobile-filter-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    .category-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .sort-dropdown {
+        width: 100%;
+    }
+
+    .custom-dropdown-trigger {
+        width: 100%;
+    }
+
+    .pagination {
+        margin-top: 2rem;
+        gap: 0.25rem;
+    }
+
+    .page-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE - DESKTOP (min 769px)
+   ===================================================== */
+
+@media (min-width: 769px) {
+    .mobile-filter-toggle,
+    .mobile-filter-header,
+    .mobile-apply-btn,
+    .mobile-filter-overlay {
+        display: none !important;
+    }
+
+    .filter-sidebar-wrapper {
+        display: block;
+        position: static;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .filter-sidebar {
+        position: sticky;
+        top: 120px;
+        transform: none;
+        width: 280px;
+        height: fit-content;
+        max-height: calc(100vh - 140px);
+    }
+}

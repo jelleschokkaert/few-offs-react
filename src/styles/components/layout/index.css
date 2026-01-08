@@ -1,0 +1,7 @@
+/* =====================================================
+   LAYOUT COMPONENTS - INDEX
+   Imports all layout component styles
+   ===================================================== */
+
+@import './navigation.css';
+@import './footer.css';

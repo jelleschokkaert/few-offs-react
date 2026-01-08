@@ -1,0 +1,9 @@
+/* =====================================================
+   UI COMPONENTS - INDEX
+   Imports all reusable UI component styles
+   ===================================================== */
+
+@import "./product-card.css";
+@import "./shop-card.css";
+@import "./filters.css";
+@import "./legacy-trending.css";

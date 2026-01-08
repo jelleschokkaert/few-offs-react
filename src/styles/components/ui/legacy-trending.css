@@ -1,0 +1,321 @@
+/* =====================================================
+   LEGACY TRENDING CAROUSEL STYLES
+   Old carousel implementation kept for backward compatibility
+   Note: New implementation uses home/trending-section.css
+   ===================================================== */
+
+/* =====================================================
+   TRENDING SECTION CONTAINER
+   ===================================================== */
+
+.trending-section {
+    padding: 4rem var(--spacing-container);
+    background: #0a0a0a;
+    overflow: hidden;
+}
+
+.trending-section .section-title {
+    color: #ffffff;
+}
+
+.trending-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.trending-carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.trending-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =====================================================
+   TRENDING CARD
+   ===================================================== */
+
+.trending-card {
+    flex: 0 0 calc(25% - 1.125rem);
+    background: #ffffff;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.trending-card:hover {
+    transform: translateY(-5px);
+}
+
+.trending-image-wrapper {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.trending-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =====================================================
+   TRENDING INFO
+   ===================================================== */
+
+.trending-info {
+    padding: 1.25rem;
+    background: #ffffff;
+}
+
+.trending-category {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--color-gray-medium);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+.trending-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    color: var(--color-text);
+    text-transform: none;
+}
+
+.trending-price {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.price-current {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-text);
+}
+
+.price-old {
+    font-size: 0.9rem;
+    color: var(--color-gray-medium);
+    text-decoration: line-through;
+}
+
+/* =====================================================
+   TRENDING NAVIGATION
+   ===================================================== */
+
+.trending-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: var(--color-text);
+    color: var(--color-bg);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.trending-nav:hover {
+    background: var(--color-accent);
+    color: var(--color-text);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.trending-nav:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.trending-nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.trending-nav:disabled:hover {
+    background: var(--color-text);
+    transform: translateY(-50%);
+}
+
+.trending-nav:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.trending-prev {
+    left: 0;
+}
+
+.trending-next {
+    right: 0;
+}
+
+/* =====================================================
+   TRENDING DOTS
+   ===================================================== */
+
+.trending-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.trending-dot {
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.trending-dot.active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    transform: scale(1.2);
+}
+
+.trending-dot:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* =====================================================
+   RESPONSIVE - LARGE TABLET (1200px)
+   ===================================================== */
+
+@media (max-width: 1200px) {
+    .trending-card {
+        flex: 0 0 calc(33.333% - 1rem);
+    }
+}
+
+/* =====================================================
+   RESPONSIVE - TABLET (768px)
+   ===================================================== */
+
+@media (max-width: 768px) {
+    .trending-section {
+        padding: 2rem 1rem;
+    }
+
+    .trending-section .section-title {
+        font-size: 10vw;
+        margin-bottom: 0.5rem;
+        line-height: 1;
+    }
+
+    .trending-wrapper {
+        gap: 1rem;
+    }
+
+    .trending-card {
+        flex: 0 0 calc(50% - 0.75rem);
+        min-width: 160px;
+    }
+
+    .trending-nav {
+        width: 40px;
+        height: 40px;
+    }
+
+    .trending-prev {
+        left: -5px;
+    }
+
+    .trending-next {
+        right: -5px;
+    }
+
+    .trending-info {
+        padding: 1rem;
+    }
+
+    .trending-info h4 {
+        font-size: 0.9rem;
+    }
+
+    .price-current {
+        font-size: 1rem;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE - SMALL MOBILE (480px)
+   ===================================================== */
+
+@media (max-width: 480px) {
+    .trending-section .section-title {
+        font-size: 12vw;
+    }
+
+    .trending-card {
+        flex: 0 0 calc(50% - 0.5rem);
+    }
+
+    .trending-track {
+        gap: 1rem;
+    }
+
+    .trending-info {
+        padding: 0.75rem;
+    }
+
+    .trending-category {
+        font-size: 0.6rem;
+    }
+
+    .trending-info h4 {
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .price-current {
+        font-size: 0.95rem;
+    }
+
+    .price-old {
+        font-size: 0.8rem;
+    }
+}
+
+/* =====================================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ===================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+    .trending-nav {
+        width: 44px;
+        height: 44px;
+    }
+
+    .trending-dot {
+        width: 14px;
+        height: 14px;
+    }
+
+    .trending-dot.active {
+        transform: none;
+    }
+
+    .trending-card:hover {
+        transform: none;
+    }
+}

@@ -1,0 +1,71 @@
+/* =====================================================
+   BRANDS MARQUEE SECTION STYLES
+   ===================================================== */
+
+.brands-section {
+    padding: 3rem 0;
+    background-color: var(--color-accent);
+    color: var(--color-dark-bg);
+    overflow: hidden;
+    transform: skewY(-2deg);
+    margin: 4rem 0;
+}
+
+.brands-marquee {
+    display: flex;
+    gap: 6rem;
+    white-space: nowrap;
+    animation: marquee 15s linear infinite;
+}
+
+.brand-item {
+    font-size: 5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--color-dark-bg);
+    line-height: 1;
+}
+
+/* =====================================================
+   RESPONSIVE STYLES
+   ===================================================== */
+
+@media (max-width: 768px) {
+    .brands-section {
+        transform: skewY(0);
+        padding: 2rem 0;
+        margin: 3rem 0;
+    }
+
+    .brands-marquee {
+        gap: 4rem;
+    }
+
+    .brand-item {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .brands-section {
+        margin: 2rem 0;
+    }
+
+    .brands-marquee {
+        gap: 3rem;
+    }
+
+    .brand-item {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .brands-marquee {
+        gap: 2rem;
+    }
+
+    .brand-item {
+        font-size: 2rem;
+    }
+}

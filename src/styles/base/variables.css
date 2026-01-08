@@ -1,0 +1,89 @@
+/* =====================================================
+   CSS CUSTOM PROPERTIES / VARIABLES
+   ===================================================== */
+
+:root {
+    /* Colors */
+    --color-accent: #d2ff00;
+    --color-bg: #f2f2f2;
+    --color-text: #0a0a0a;
+    --color-dark-bg: #0a0a0a;
+    --color-light-text: #ffffff;
+    --color-gray-light: #e0e0e0;
+    --color-gray-medium: #888888;
+
+    /* Typography */
+    --font-main: "Inter", sans-serif;
+
+    /* Spacing */
+    --spacing-container: 6vw;
+}
+
+/* =====================================================
+   GLOBAL KEYFRAMES
+   ===================================================== */
+
+@keyframes wishlistPop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.4);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes revealText {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

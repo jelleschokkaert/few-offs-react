@@ -1,0 +1,417 @@
+/* =====================================================
+   NEW SECTION STYLES
+   ===================================================== */
+
+.new-section {
+    background: var(--color-bg);
+    padding: 5rem 0;
+    overflow: hidden;
+}
+
+.new-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 6vw;
+}
+
+.new-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.new-title-wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.new-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.new-accent {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    color: #0a0a0a;
+    line-height: 1;
+}
+
+.new-subtitle {
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.05em;
+    color: rgba(10, 10, 10, 0.5);
+}
+
+.new-view-all {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #0a0a0a;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition:
+        gap 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+    background: #d2ff00;
+    padding: 0.75rem 1.25rem;
+}
+
+.new-view-all:hover {
+    gap: 0.75rem;
+    background: #0a0a0a;
+    color: #fff;
+}
+
+/* =====================================================
+   BENTO GRID LAYOUT
+   ===================================================== */
+
+.new-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 280px;
+    grid-auto-flow: dense;
+    gap: 1rem;
+}
+
+.new-card {
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    text-decoration: none;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: border-color 0.3s ease;
+    contain: layout style paint;
+}
+
+.new-card:hover {
+    border-color: #d2ff00;
+}
+
+.new-card-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.new-card-tall {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.new-card-wide {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.new-card-normal {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+/* =====================================================
+   CARD IMAGE & OVERLAY
+   ===================================================== */
+
+.new-card-image {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.new-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.new-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        transparent 40%,
+        rgba(0, 0, 0, 0.7) 100%
+    );
+    pointer-events: none;
+}
+
+/* =====================================================
+   WISHLIST BUTTON
+   ===================================================== */
+
+.new-wishlist {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        opacity 0.2s ease;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.new-card:hover .new-wishlist {
+    opacity: 1;
+}
+
+.new-wishlist:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
+}
+
+.new-wishlist.active {
+    color: #d2ff00;
+    background: rgba(0, 0, 0, 0.8);
+    animation: wishlistPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 12px rgba(210, 255, 0, 0.4);
+    opacity: 1;
+}
+
+.new-wishlist svg {
+    stroke-width: 2px;
+}
+
+/* =====================================================
+   BADGE
+   ===================================================== */
+
+.new-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: #d2ff00;
+    color: #000;
+}
+
+/* =====================================================
+   CARD INFO
+   ===================================================== */
+
+.new-card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.25rem;
+    color: #fff;
+    z-index: 2;
+}
+
+.new-brand {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #d2ff00;
+    margin-bottom: 0.25rem;
+}
+
+.new-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.new-card-large .new-name {
+    font-size: 1.25rem;
+}
+
+.new-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-shop-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.7);
+    transition:
+        color 0.3s ease,
+        gap 0.3s ease;
+}
+
+.new-card:hover .new-shop-link {
+    color: #d2ff00;
+    gap: 0.6rem;
+}
+
+/* =====================================================
+   RESPONSIVE STYLES
+   ===================================================== */
+
+@media (max-width: 1200px) {
+    .new-bento-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 250px;
+    }
+
+    .new-card-large {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+}
+
+@media (max-width: 900px) {
+    .new-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 220px;
+        gap: 1rem;
+    }
+
+    .new-card-large {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .new-card-wide {
+        grid-column: span 2;
+    }
+
+    .new-card-tall {
+        grid-row: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .new-section {
+        padding: 3rem 0;
+    }
+
+    .new-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .new-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .new-wishlist {
+        opacity: 1;
+        width: 32px;
+        height: 32px;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+
+    .new-view-all {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .new-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 200px;
+        gap: 0.75rem;
+    }
+
+    .new-card-info {
+        padding: 1rem;
+    }
+
+    .new-brand {
+        font-size: 0.6rem;
+    }
+
+    .new-name {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+        -webkit-line-clamp: 1;
+    }
+
+    .new-card-large .new-name {
+        font-size: 1rem;
+        -webkit-line-clamp: 2;
+    }
+
+    .new-shop-link {
+        font-size: 0.65rem;
+    }
+
+    .new-badge {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.55rem;
+        top: 0.5rem;
+        left: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .new-section {
+        padding: 2.5rem 0;
+    }
+
+    .new-container {
+        padding: 0 4vw;
+    }
+
+    .new-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .new-bento-grid {
+        grid-auto-rows: 180px;
+        gap: 0.5rem;
+    }
+
+    .new-card-info {
+        padding: 0.75rem;
+    }
+
+    .new-name {
+        font-size: 0.75rem;
+    }
+
+    .new-card-large .new-name {
+        font-size: 0.9rem;
+    }
+
+    .new-card-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}

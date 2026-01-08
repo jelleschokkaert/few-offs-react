@@ -1,0 +1,85 @@
+/* =====================================================
+   CONCEPT SECTION STYLES
+   ===================================================== */
+
+.concept-section {
+    padding: 4rem var(--spacing-container);
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.concept-content {
+    flex: 1;
+}
+
+.concept-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 2rem 0 3rem;
+    color: rgba(10, 10, 10, 0.8);
+    max-width: 500px;
+}
+
+.concept-visual {
+    flex: 1;
+    height: 600px;
+    position: relative;
+}
+
+.concept-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+/* =====================================================
+   RESPONSIVE STYLES
+   ===================================================== */
+
+@media (max-width: 900px) {
+    .concept-section {
+        flex-direction: column;
+        padding: 4rem var(--spacing-container);
+        gap: 2rem;
+    }
+
+    .concept-visual {
+        min-height: 300px;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+    }
+
+    .concept-text {
+        font-size: 1rem;
+        margin: 1.5rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .concept-section {
+        flex-direction: column;
+        padding: 3rem var(--spacing-container);
+        gap: 2rem;
+    }
+
+    .concept-visual {
+        min-height: 300px;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+    }
+
+    .concept-text {
+        font-size: 1rem;
+        margin: 1.5rem 0 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .concept-visual {
+        height: 280px;
+    }
+}

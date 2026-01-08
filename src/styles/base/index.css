@@ -1,0 +1,8 @@
+/* =====================================================
+   BASE STYLES - INDEX
+   Imports all base/foundational styles
+   ===================================================== */
+
+@import "./variables.css";
+@import "./reset.css";
+@import "./animations.css";
