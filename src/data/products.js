@@ -16,8 +16,8 @@ export const products = [
     sizes: ["XS", "S", "M", "L", "XL"],
     color: "White",
     colors: [
-      { name: "White", value: "#ffffff" },
-      { name: "Black", value: "#000000" },
+      { name: "White", value: "#ffffff", image: "/optimized/pexels-goodcitizen-2072454.webp" },
+      { name: "Black", value: "#000000", image: "/optimized/pexels-black-bird-859122-1954861.webp" },
     ],
     material: "100% Organisch Katoen (Heavyweight)",
     wash_instructions: "Machinewas op 30°C, niet in de droger.",
@@ -45,8 +45,8 @@ export const products = [
     sizes: ["S", "M", "L", "XL"],
     color: "Black",
     colors: [
-      { name: "Black", value: "#000000" },
-      { name: "Red", value: "#E91E12" },
+      { name: "Black", value: "#000000", image: "/optimized/pexels-black-bird-859122-1954861.webp" },
+      { name: "Red", value: "#E91E12", image: "/optimized/pexels-atef-khaled-825144-1726457.webp" },
     ],
     material: "100% Katoen",
     wash_instructions: "Binnenstebuiten wassen op 30 graden.",
@@ -71,8 +71,8 @@ export const products = [
     sizes: ["S", "M", "L", "XL"],
     color: "Navy",
     colors: [
-      { name: "Navy", value: "#000080" },
-      { name: "Green", value: "#006400" },
+      { name: "Navy", value: "#000080", image: "/optimized/pexels-black-bird-859122-1954861.webp" },
+      { name: "Green", value: "#006400", image: "/optimized/pexels-davidowaga-1874866.webp" },
     ],
     material: "Nylon Shell, Polyester Voering",
     wash_instructions: "Alleen stomerij.",
@@ -97,8 +97,8 @@ export const products = [
     sizes: ["XS", "S", "M"],
     color: "Grey",
     colors: [
-      { name: "Grey", value: "#808080" },
-      { name: "Pink", value: "#FFC0CB" },
+      { name: "Grey", value: "#808080", image: "/optimized/pexels-davidowaga-1874866.webp" },
+      { name: "Pink", value: "#FFC0CB", image: "/optimized/pexels-ewerton-alves-1549352-3058180.webp" },
     ],
   },
   {
@@ -116,8 +116,8 @@ export const products = [
     sizes: ["S", "M"],
     color: "Beige",
     colors: [
-      { name: "Beige", value: "#F5F5DC" },
-      { name: "Olive", value: "#808000" },
+      { name: "Beige", value: "#F5F5DC", image: "/optimized/pexels-ewerton-alves-1549352-3058180.webp" },
+      { name: "Olive", value: "#808000", image: "/optimized/pexels-godisable-jacob-226636-952629.webp" },
     ],
   },
   {
@@ -135,8 +135,8 @@ export const products = [
     sizes: ["48", "50", "52"],
     color: "Grey",
     colors: [
-      { name: "Grey", value: "#808080" },
-      { name: "Black", value: "#000000" },
+      { name: "Grey", value: "#808080", image: "/optimized/pexels-godisable-jacob-226636-952629.webp" },
+      { name: "Black", value: "#000000", image: "/optimized/pexels-black-bird-859122-1954861.webp" },
     ],
   },
   {
@@ -150,7 +150,7 @@ export const products = [
     images: ["/optimized/pexels-atef-khaled-825144-1726457.webp"],
     sizes: ["128", "140", "152"],
     color: "Brown",
-    colors: [{ name: "Brown", value: "#8B4513" }],
+    colors: [{ name: "Brown", value: "#8B4513", image: "/optimized/pexels-atef-khaled-825144-1726457.webp" }],
   },
   {
     id: 8,
@@ -163,7 +163,7 @@ export const products = [
     images: ["/optimized/pexels-black-bird-859122-1954861.webp"],
     sizes: ["S", "M", "L"],
     color: "Camo",
-    colors: [{ name: "Camo", value: "#556B2F" }],
+    colors: [{ name: "Camo", value: "#556B2F", image: "/optimized/pexels-black-bird-859122-1954861.webp" }],
   },
   {
     id: 9,
@@ -176,7 +176,7 @@ export const products = [
     images: ["/optimized/pexels-goodcitizen-2072454.webp"],
     sizes: ["116", "128", "140"],
     color: "Blue",
-    colors: [{ name: "Blue", value: "#0000FF" }],
+    colors: [{ name: "Blue", value: "#0000FF", image: "/optimized/pexels-goodcitizen-2072454.webp" }],
   },
   {
     id: 10,
@@ -189,7 +189,7 @@ export const products = [
     images: ["/optimized/pexels-davidowaga-1874866.webp"],
     sizes: ["41", "42", "43", "44"],
     color: "White",
-    colors: [{ name: "White", value: "#FFFFFF" }],
+    colors: [{ name: "White", value: "#FFFFFF", image: "/optimized/pexels-davidowaga-1874866.webp" }],
   },
   {
     id: 11,
@@ -202,7 +202,7 @@ export const products = [
     images: ["/optimized/pexels-ewerton-alves-1549352-3058180.webp"],
     sizes: ["28", "30", "32"],
     color: "Blue",
-    colors: [{ name: "Blue", value: "#0000FF" }],
+    colors: [{ name: "Blue", value: "#0000FF", image: "/optimized/pexels-ewerton-alves-1549352-3058180.webp" }],
   },
   {
     id: 12,
@@ -215,7 +215,7 @@ export const products = [
     images: ["/optimized/pexels-godisable-jacob-226636-952629.webp"],
     sizes: ["134", "146", "158"],
     color: "Green",
-    colors: [{ name: "Green", value: "#008000" }],
+    colors: [{ name: "Green", value: "#008000", image: "/optimized/pexels-godisable-jacob-226636-952629.webp" }],
   },
   {
     id: 13,
@@ -228,6 +228,6 @@ export const products = [
     images: ["/optimized/pexels-atef-khaled-825144-1726457.webp"],
     sizes: ["S", "M", "L", "XL"],
     color: "Black",
-    colors: [{ name: "Black", value: "#000000" }],
+    colors: [{ name: "Black", value: "#000000", image: "/optimized/pexels-atef-khaled-825144-1726457.webp" }],
   },
 ];

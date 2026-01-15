@@ -4235,14 +4235,23 @@ footer {
 }
 
 .color-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid var(--color-gray-light);
-    padding: 3px;
+    width: 80px;
+    height: 100px;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    padding: 0;
     background: transparent;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.2s;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.color-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .color-swatch-inner {
@@ -4259,7 +4268,7 @@ footer {
 
 .color-btn.active {
     border-color: var(--color-text);
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 /* Update related grid layout */
@@ -4438,14 +4447,8 @@ footer {
 
 /* Color Buttons */
 .color-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1px solid transparent;
-    padding: 2px;
-    background: transparent;
-    cursor: pointer;
-    transition: transform 0.2s;
+    width: 60px;
+    height: 75px;
 }
 
 .color-btn.active {

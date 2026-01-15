@@ -21,7 +21,7 @@ const InfoSection = ({ title, isOpen, onToggle, children }) => {
 
 const ProductDetailContent = ({ product }) => {
   const images = product.images || [product.image];
-  const colors = product.colors || [{ name: product.color, value: "#000" }];
+  const colors = product.colors || [{ name: product.color, value: "#000", image: product.image }];
   const defaultColor =
     product.colors && product.colors.length > 0
       ? product.colors[0].name
@@ -111,10 +111,11 @@ const ProductDetailContent = ({ product }) => {
                     className={`color-btn ${selectedColor === c.name ? "active" : ""}`}
                     title={c.name}
                   >
-                    <span
-                      className="color-swatch-inner"
-                      style={{ backgroundColor: c.value }}
-                    ></span>
+                    <img
+                      src={c.image || product.image}
+                      alt={c.name}
+                      className="color-image"
+                    />
                   </button>
                 ))}
               </div>
