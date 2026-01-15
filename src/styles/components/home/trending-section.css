@@ -31,7 +31,7 @@
     z-index: 1;
     max-width: 1600px;
     margin: 0 auto;
-    padding: 0 6vw;
+    padding: 0 var(--spacing-container);
 }
 
 .trending-header {
@@ -360,7 +360,7 @@
     }
 
     .trending-container {
-        padding: 0 4vw;
+        padding: 0 var(--spacing-container);
     }
 
     .trending-header {

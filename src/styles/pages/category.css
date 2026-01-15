@@ -38,29 +38,29 @@
 
 @media (max-width: 768px) {
     .category-page-header {
-        margin-top: 1rem;
+        margin: 2rem 0 2rem;
     }
 
     .category-title {
-        font-size: 2.5rem;
-        line-height: 1;
-        margin-bottom: 0.75rem;
+        font-size: 15vw;
+        margin-bottom: 1rem;
+        line-height: 0.85;
     }
 
     .category-description {
         font-size: 0.9rem;
-        line-height: 1.5;
-        max-width: none;
+        opacity: 0.8;
+        max-width: 100%;
     }
 
     .category-content-wrapper {
+        display: flex;
         flex-direction: column;
-        gap: 0;
-        padding-bottom: 6rem;
+        gap: 2rem;
     }
 
     .product-listing-container {
-        width: 100%;
+        flex: 1;
     }
 }
 

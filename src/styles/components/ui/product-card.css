@@ -402,7 +402,7 @@
 
 @media (max-width: 768px) {
     .products-section {
-        padding: 2rem 1rem;
+        padding: 2rem var(--spacing-container);
     }
 
     .section-header {

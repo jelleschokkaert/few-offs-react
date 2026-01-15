@@ -557,8 +557,16 @@
     }
 
     .related-products .shop-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.8rem !important;
+        display: grid;
+    }
+
+    .related-products .shop-product-card {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+        min-height: auto !important;
+        height: auto !important;
     }
 }
 
@@ -604,6 +612,19 @@
     .btn-wishlist {
         padding: 1rem;
         font-size: 0.9rem;
+    }
+
+    .related-products .shop-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.8rem !important;
+        display: grid;
+    }
+
+    .related-products .shop-product-card {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+        min-height: auto !important;
+        height: auto !important;
     }
 }
 
@@ -662,5 +683,9 @@
     .related-products {
         margin-top: 4rem;
         padding-top: 2rem;
+    }
+
+    .related-products .shop-grid {
+        gap: 0.8rem !important;
     }
 }

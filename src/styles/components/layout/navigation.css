@@ -154,7 +154,7 @@
 
 .main-nav {
     background: rgba(10, 10, 10, 0.95);
-    padding: 0 2rem;
+    padding: 0;
     border-bottom: 1px solid transparent;
     transition: all 0.3s ease;
 }
@@ -164,6 +164,7 @@
     justify-content: space-between;
     align-items: center;
     height: 60px;
+    padding: 0 var(--spacing-container);
 }
 
 .desktop-nav {
@@ -640,6 +641,14 @@
     .navbar {
         padding: 1rem var(--spacing-container);
         justify-content: space-between;
+    }
+
+    .main-nav-inner {
+        height: 50px;
+    }
+
+    .site-header {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 }
 
