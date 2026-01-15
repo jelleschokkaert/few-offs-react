@@ -3,7 +3,7 @@
    ===================================================== */
 
 .category-page-header {
-    padding-top: 8rem;
+    margin-top: 1.5rem;
     padding-bottom: 2rem;
 }
 
@@ -38,7 +38,7 @@
 
 @media (max-width: 768px) {
     .category-page-header {
-        padding-top: 6rem;
+        margin-top: 1rem;
     }
 
     .category-title {
@@ -90,7 +90,7 @@
     }
 
     .category-page-header {
-        padding-top: 9rem;
+        margin-top: 1.5rem;
     }
 
     .category-header-row {
@@ -107,7 +107,7 @@
 
 @media (max-width: 480px) {
     .category-page-header {
-        padding-top: 5.5rem;
+        margin-top: 1rem;
     }
 
     .category-title {
