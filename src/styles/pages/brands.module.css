@@ -1,0 +1,329 @@
+/* =====================================================
+   BRANDS PAGE STYLES
+   ===================================================== */
+
+.brands-page {
+  padding-top: 8rem;
+  padding-bottom: 6rem;
+  min-height: 80vh;
+}
+
+.brands-header {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.brands-title {
+  font-size: 8vw;
+  line-height: 0.9;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.brands-subtitle {
+  font-size: 1.2rem;
+  color: var(--color-gray-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.brands-grid.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.brand-card {
+  position: relative;
+  height: 200px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease;
+  animation: cardReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--delay);
+  opacity: 0;
+  transform: translateY(40px);
+  contain: layout style paint;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(210, 255, 0, 0.3);
+}
+
+@keyframes cardReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.brand-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(210, 255, 0, 0.3);
+}
+
+.brand-card-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 100%);
+  transition: background 0.4s ease;
+}
+
+.brand-card:hover .brand-card-inner {
+  background: linear-gradient(145deg, #ffffff 0%, #f0f0f0 100%);
+}
+
+.brand-logo-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.brand-logo-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand-card:hover .brand-logo-inner {
+  transform: scale(1.1);
+}
+
+.brand-logo {
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-logo svg {
+  max-width: 100%;
+  max-height: 80px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(30%);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.brand-card:hover .brand-logo svg {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+.brand-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-gray-medium);
+  margin-top: auto;
+  padding-top: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.brand-card:hover .brand-name {
+  color: var(--color-accent);
+  transform: scale(1.05);
+}
+
+.brand-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(210, 255, 0, 0.15) 0%,
+    transparent 60%
+  );
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  z-index: 1;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.brand-card:hover .brand-glow {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Accent corner decoration */
+.brand-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 40px 40px 0;
+  border-color: transparent var(--color-accent) transparent transparent;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.brand-card:hover::before {
+  opacity: 1;
+}
+
+/* Animated line on hover */
+.brand-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 3;
+}
+
+.brand-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* =====================================================
+   RESPONSIVE - TABLET (1024px)
+   ===================================================== */
+@media (max-width: 1024px) {
+  .brands-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .brand-card {
+    height: 180px;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE - MOBILE (768px)
+   ===================================================== */
+@media (max-width: 768px) {
+  .brands-page {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+
+  .brands-header {
+    margin-bottom: 3rem;
+  }
+
+  .brands-title {
+    font-size: 15vw;
+  }
+
+  .brands-subtitle {
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+  }
+
+  .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .brand-card {
+    height: 160px;
+    animation-delay: calc(var(--delay) * 0.7);
+  }
+
+  .brand-logo svg {
+    max-height: 60px;
+  }
+
+  .brand-name {
+    font-size: 0.65rem;
+    padding-top: 0.75rem;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE - SMALL MOBILE (480px)
+   ===================================================== */
+@media (max-width: 480px) {
+  .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .brand-card {
+    height: 140px;
+    border-radius: 6px;
+  }
+
+  .brand-logo-wrapper {
+    padding: 0.75rem;
+  }
+
+  .brand-logo svg {
+    max-height: 50px;
+  }
+
+  .brand-name {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+/* =====================================================
+   ACCESSIBILITY
+   ===================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .brand-card,
+  .brand-card-inner,
+  .brand-logo-inner,
+  .brand-logo svg,
+  .brand-name,
+  .brand-glow,
+  .brand-card::before,
+  .brand-card::after,
+  .brands-grid {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
